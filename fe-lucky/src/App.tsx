@@ -2,11 +2,17 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Loader } from './common'
+import {pause} from './utils/utils'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
- return <Loader />
+  const [isLoading,setIsLoading] = useState(true);
+  pause(2000).then(() => {
+    setIsLoading(false)
+  })
+  if (isLoading) return <Loader />
+ if (isLoading) return <Loader />
   return (
     <>
       <div>
