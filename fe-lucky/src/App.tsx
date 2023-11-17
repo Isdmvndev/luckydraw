@@ -1,42 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Loader } from './common'
-import {pause} from './utils/utils'
-import './App.css'
-
+import { useState } from "react";
+import { Loader } from "./common";
+import { pause } from "./utils/utils";
+import "./App.css";
+import { RouterProvider } from 'react-router-dom'
+import { routers } from './routes'
+import { LuckyDraw } from "./pages/LuckyDraw/luckydraw";
 function App() {
-  const [count, setCount] = useState(0)
-  const [isLoading,setIsLoading] = useState(true);
-  pause(2000).then(() => {
-    setIsLoading(false)
-  })
-  if (isLoading) return <Loader />
- if (isLoading) return <Loader />
+  const [isLoading, setIsLoading] = useState(true);
+  pause(1000).then(() => {
+    setIsLoading(false);
+  });
+  if (isLoading) return <Loader />;
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <> 
+        <LuckyDraw/>
+        <RouterProvider router={routers} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
